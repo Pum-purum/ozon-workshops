@@ -1,0 +1,12 @@
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+      - "8082:8082"
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: sleep infinity
+    stdin_open: true
+    tty: true
