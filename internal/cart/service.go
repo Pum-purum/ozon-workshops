@@ -2,18 +2,16 @@ package cart
 
 import (
 	"errors"
-
-	"shop/internal/cart/productclient"
 )
 
 var ErrProductNotFound = errors.New("product not found")
 
 type Service struct {
-	store         *store
-	productClient *productclient.Client
+	store         RepositoryInterface
+	productClient ProductClientInterface
 }
 
-func NewService(productClient *productclient.Client) *Service {
+func NewService(productClient ProductClientInterface) *Service {
 	return &Service{
 		store:         newStore(),
 		productClient: productClient,
