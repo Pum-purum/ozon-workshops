@@ -2,10 +2,7 @@ package cart
 
 import "shop/internal/cart/productclient"
 
-// ProductClient умеет получать информацию о товаре по SKU.
-// Обрати внимание: сигнатура метода один-в-один совпадает с методом
-// productclient.Client.GetProduct — поэтому *productclient.Client
-// автоматически подходит под этот интерфейс, ничего в нём менять не нужно.
+//go:generate minimock -i shop/internal/cart.ProductClientInterface -o ./product_client_mock_test.go -n ProductClientMock -p cart
 type ProductClientInterface interface {
 	GetProduct(sku int64) (productclient.Product, bool, error)
 }
